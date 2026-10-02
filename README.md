@@ -11,6 +11,53 @@
 上一版是一个「手机专用控制台」：点开后全屏接管主界面、功能很多、还回不去。
 那一版被否决了，也已整体删除——本版只做一件事：把界面递到手机上。
 
+## 安装
+
+前置：已经装好 DeepSeek Harness（Desktop 应用，或 `dsh` 命令行）。
+
+这个插件不在 npm 上，安装 = 把仓库里的 **`plugin/` 目录**作为一个本地 bundle 加进你的
+profile。在 Harness 的 **Plugins** 页面 →「添加插件」里，两种都行：
+
+**方式一 · 一行地址**（最省事）：
+
+```
+github:lwx071001/dsh-mobile-console#path:/plugin
+```
+
+`#path:/plugin` 是包管理器的「仓库子目录」写法；等价的 https 形式是
+`https://github.com/lwx071001/dsh-mobile-console#path:/plugin`。
+
+**方式二 · 本地目录**：`git clone https://github.com/lwx071001/dsh-mobile-console.git`
+（或在仓库页点 `Code → Download ZIP` 解压），然后在同一个输入框里填入 `plugin`
+目录的**绝对路径**。等价的 agent 调用：
+`plugin_manager  action: install_bundle  target: <…>\plugin`
+
+装完都要 **重启一次 Harness**；刷新页面后侧边栏底部才会出现「手机访问」。
+
+> ⚠️ **不要**直接填仓库根地址（`https://github.com/lwx071001/dsh-mobile-console`）：
+> bundle 在 `plugin/` 子目录里，根目录的 `package.json` 是开发用的
+> （`mobile-console-dev`，没有 `dsh` 字段）。这一点实测过——`pnpm add github:lwx071001/dsh-mobile-console`
+> 装下来的是 `mobile-console-dev`，装完什么都不会发生。
+
+重启为什么不能省：宿主半体是新的 JS 模块，而 Node 的 ESM 缓存按 URL 命中，
+在 Harness 里停用/再启用插件行**不会**重新导入同一个文件（浏览器半体会随页面刷新更新）。
+
+## 环境要求
+
+| 项 | 要求 |
+|---|---|
+| Harness | **Desktop 应用**——本插件是针对它的行为写的：Web 服务只监听回环、`ctx.connection` 提供 `requestRejection` / `authenticatedUrl`、侧边栏存在 `sidebar.footer.action` 座位。CLI 的 `dsh web` 理论上同样可用，但**未实测**。 |
+| 手机 | 与电脑在同一局域网；任一现代手机浏览器（用系统相机扫码即可） |
+| 开发自检 | Node ≥ 20；`pnpm install` 只用于装测试依赖 `jsqr`（`plugin/` 本身零运行时依赖） |
+
+插件只使用宿主的公开接口，但**不承诺跨版本兼容**。换 DSH 版本后，30 秒验收：
+
+1. 重启后访问 `http://127.0.0.1:<端口>/api/mobile-console/handoff` —— 未携带会话 cookie 时
+   应得到 **401**，且响应体里**不含任何令牌**（这条路由只回答已登录的页面）；
+2. 页面里点「手机访问 → 开启手机访问」，出现二维码即说明两条路由与桥都工作；
+3. 离线自检：`node tools/verify.mjs && node tools/smoke.mjs`（106 + 50 条断言；其中桥的
+   代理转发与 WebSocket 升级是拿**真实上游**做的，不依赖 Harness）。
+
 ## 为什么需要一个「桥」
 
 Desktop 版 Harness 用固定的 `--port 19387`、**不带** `--host` 启动 Web 服务，

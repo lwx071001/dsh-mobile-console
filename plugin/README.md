@@ -18,7 +18,17 @@
 
 ## 安装与卸载
 
-安装（推荐）：把仓库里的 `plugin/` 目录加进去。
+安装（推荐，一行）：在 Harness 的 **Plugins** 页面 →「添加插件」里粘
+
+```
+github:lwx071001/dsh-mobile-console#path:/plugin
+```
+
+`#path:/plugin` 是包管理器的「仓库子目录」写法——本仓库的 bundle 在这个子目录里，
+根目录的 `package.json` 是开发用的，直接填仓库根地址会装成 `mobile-console-dev`
+（什么都没发生）。
+
+已经 clone 到本机的话，也可以直接填本目录的绝对路径：
 
 ```
 Plugins → 添加 → <仓库目录>\plugin
