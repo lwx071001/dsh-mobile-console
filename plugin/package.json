@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "license": "MIT",
   "description": "Open this Harness on a phone: a small window with a QR code and a one-switch LAN bridge to the loopback GUI.",
   "icon": "./icon.svg",
   "exports": {

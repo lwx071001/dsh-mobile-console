@@ -18,10 +18,10 @@
 
 ## 安装与卸载
 
-安装（推荐）：
+安装（推荐）：把仓库里的 `plugin/` 目录加进去。
 
 ```
-Plugins → 添加 → F:\CaelumProject\dsh\mobile-console\plugin
+Plugins → 添加 → <仓库目录>\plugin
 ```
 
 等价的 agent 调用：

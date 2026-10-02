@@ -54,7 +54,7 @@ Desktop 版 Harness 用固定的 `--port 19387`、**不带** `--host` 启动 Web
 ## 自检
 
 ```
-cd F:\CaelumProject\dsh\mobile-console
+cd dsh-mobile-console      # 克隆下来的仓库目录
 pnpm install
 node tools/verify.mjs
 node tools/smoke.mjs
@@ -108,3 +108,7 @@ node tools/smoke.mjs
   插件行本身在**重启之后**才会加载这份新宿主代码，重启前的在线探测仍返回旧载荷。
 - 局域网里存在多张网卡时，二维码默认用第一张网卡的地址（其余地址列在
   `addresses` 里但界面上不显示）。
+
+## 许可
+
+[MIT](LICENSE) © 2026 lwx071001
