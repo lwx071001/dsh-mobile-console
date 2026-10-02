@@ -70,6 +70,15 @@ github:lwx071001/dsh-mobile-console#path:/plugin
 3. 离线自检：`node tools/verify.mjs && node tools/smoke.mjs`（106 + 50 条断言；其中桥的
    代理转发与 WebSocket 升级是拿**真实上游**做的，不依赖 Harness）。
 
+## 与同类实现的区别
+
+手机访问 Harness 已经有不少实现（公网隧道、反向代理、独立手机客户端都有）。本插件的取舍是：
+
+- **不改服务绑定、不为它重启**：桥由插件按需建立，不需要 `dsh web --host 0.0.0.0`，也不需要为了对外而重启服务；关掉开关即消失。
+- **手机上跑的是原版界面**：转发的是同一份 Web GUI、同一份会话，不是第二套移动端客户端，也不做屏幕镜像。
+- **一条地址安装**：以 bundle 形式安装（`#path:` 子目录写法），装完只需重启一次让宿主半体载入。
+- **证据随仓库走**：`tools/verify.mjs` + `tools/smoke.mjs`（106 + 50 条断言）；其中桥的代理转发与 WebSocket 升级是拿**真实上游**做的，不依赖 Harness 也能复现。
+
 ## 为什么需要一个「桥」
 
 Desktop 版 Harness 用固定的 `--port 19387`、**不带** `--host` 启动 Web 服务，
