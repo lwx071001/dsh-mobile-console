@@ -1,0 +1,13 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# scratch / test output
+_tmp-*
+*.log
+
+# editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

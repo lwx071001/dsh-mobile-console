@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <!-- A phone outline holding a session dot and two lines: the console in one glyph. -->
+  <rect x="6.5" y="2.5" width="11" height="19" rx="2.5" />
+  <line x1="10" y1="5.2" x2="14" y2="5.2" />
+  <circle cx="9.4" cy="10.2" r="1.1" fill="currentColor" stroke="none" />
+  <line x1="12" y1="10.2" x2="15" y2="10.2" />
+  <line x1="9.4" y1="14" x2="15" y2="14" />
+  <line x1="9.4" y1="17.2" x2="13" y2="17.2" />
+</svg>

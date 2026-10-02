@@ -1,0 +1,17 @@
+{
+  "name": "mobile-console-dev",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Offline test dependencies and entry points for the mobile-console plugin. The installable bundle in plugin/ has no runtime dependencies.",
+  "scripts": {
+    "verify": "node tools/verify.mjs",
+    "smoke": "node tools/smoke.mjs",
+    "check": "node tools/verify.mjs && node tools/smoke.mjs",
+    "build:client": "node tools/inline-qr.mjs",
+    "qr:decode": "node tools/qr-decode.mjs"
+  },
+  "devDependencies": {
+    "jsqr": "^1.4.0"
+  }
+}

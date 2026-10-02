@@ -1,0 +1,7 @@
+# The repository stores LF and the working tree keeps LF: these files are plain
+# ESM/YAML/JS consumed by Node on any platform, so CRLF would only add churn.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.ico binary
