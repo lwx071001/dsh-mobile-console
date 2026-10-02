@@ -11,6 +11,18 @@
 上一版是一个「手机专用控制台」：点开后全屏接管主界面、功能很多、还回不去。
 那一版被否决了，也已整体删除——本版只做一件事：把界面递到手机上。
 
+> **English** — A **DeepSeek Harness (DSH) plugin** that opens this machine's Harness
+> on a **phone**. The sidebar gains one capsule button; it opens a small window with a
+> **QR code**, the address, and a switch. Scanning it loads **the same Web GUI and the
+> same sessions** — the plugin's own **LAN bridge** forwards to the loopback server, so
+> there is **no `--host 0.0.0.0`, no server rebind, and no second client** to keep in
+> step. Bundles are installed by address:
+> `github:lwx071001/dsh-mobile-console#path:/plugin` → Harness **Plugins → 添加插件** →
+> restart once. MIT licensed. *(手机访问 / 手机远程 / 二维码连接)*
+>
+> Keywords: `dsh` `dsh-plugin` `deepseek-harness` `deepseek` `cordis` `plugin` `mobile`
+> `phone` `qr-code` `lan` `bridge` `remote-access` `web-gui`.
+
 ## 安装
 
 前置：已经装好 DeepSeek Harness（Desktop 应用，或 `dsh` 命令行）。

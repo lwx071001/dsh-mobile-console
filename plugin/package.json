@@ -5,6 +5,20 @@
   "type": "module",
   "license": "MIT",
   "description": "Open this Harness on a phone: a small window with a QR code and a one-switch LAN bridge to the loopback GUI.",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "deepseek",
+    "cordis",
+    "plugin",
+    "mobile",
+    "phone",
+    "qr-code",
+    "lan",
+    "bridge",
+    "remote-access"
+  ],
   "icon": "./icon.svg",
   "exports": {
     ".": "./index.js",
